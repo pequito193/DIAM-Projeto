@@ -1,0 +1,18 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    # Autenticação
+    path('signup/', views.signup),
+    path('login/', views.login_view),
+    path('logout/', views.logout_view),
+    path('user/', views.user_view),
+
+    # Fórum e Funcionalidades
+    path('posts/', views.post_list_create),
+    path('posts/<int:pk>/', views.post_detail_update_delete),
+    path('comments/', views.comment_create),
+    path('comments/<int:pk>/', views.comment_delete),
+    path('news/', views.news_list_create),
+    path('trails/', views.trail_list_create),
+]
