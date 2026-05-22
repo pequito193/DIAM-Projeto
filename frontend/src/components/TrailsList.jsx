@@ -53,6 +53,18 @@ const TrailsList = () => {
         }
     };
 
+    // Remoção de um trilho (Exclusivo Administrador)
+    const handleDeleteTrail = async (trailId) => {
+        if (window.confirm('Tem a certeza de que pretende apagar este trilho do catálogo?')) {
+            try {
+                await api.delete(`trails/${trailId}/`);
+                fetchTrails(); // Recarrega a tabela após apagar
+            } catch (err) {
+                alert('Erro ao apagar o trilho.');
+            }
+        }
+    };
+
     // Verifica se o utilizador atual tem o papel de Administrador
     const isAdmin = user && user.role === 'ADMINISTRADOR';
 
@@ -120,6 +132,7 @@ const TrailsList = () => {
                                 <th>Nome do Percurso</th>
                                 <th>Localização</th>
                                 <th>Meteorologia Associada</th>
+                                {isAdmin && <th>Ações</th>}
                             </tr>
                         </thead>
                         <tbody>
@@ -135,6 +148,13 @@ const TrailsList = () => {
                                             <small className="text-muted">Sem dados disponíveis</small>
                                         )}
                                     </td>
+                                    {isAdmin && (
+                                        <td>
+                                            <Button color="danger" size="sm" onClick={() => handleDeleteTrail(trail.id)}>
+                                                Apagar
+                                            </Button>
+                                        </td>
+                                    )}
                                 </tr>
                             ))}
                         </tbody>

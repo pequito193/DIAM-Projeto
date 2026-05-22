@@ -120,9 +120,9 @@ const PostsList = () => {
                                         value={category} 
                                         onChange={(e) => setCategory(e.target.value)}
                                     >
-                                        <option value="TRILHO">Trilho ⛰️</option>
-                                        <option value="EQUIPAMENTO">Equipamento 🥾</option>
-                                        <option value="ENCONTRO">Encontro 🤝</option>
+                                        <option value="TRILHO">Trilho</option>
+                                        <option value="EQUIPAMENTO">Equipamento</option>
+                                        <option value="ENCONTRO">Encontro</option>
                                     </Input>
                                 </FormGroup>
                                 <FormGroup>

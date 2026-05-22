@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import PostsList from './components/PostsList';
 import TrailsList from './components/TrailsList';
 import NewsList from './components/NewsList';
+import AdminPanel from './components/AdminPanel';
 
 // Placeholders temporários para as rotas
 const Home = () => (
@@ -15,8 +16,6 @@ const Home = () => (
     <p>Escolha uma opção na barra superior para explorar os trilhos ou participar na comunidade.</p>
   </div>
 );
-
-const AdminPanel = () => <div><h2>Painel do Administrador (Gestão de Contas)</h2></div>;
 
 const App = () => {
   const { user, loading } = useUserContext();

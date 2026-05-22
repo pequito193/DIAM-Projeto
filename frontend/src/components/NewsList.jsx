@@ -52,6 +52,18 @@ const NewsList = () => {
         }
     };
 
+    // Remoção de uma notícia (Exclusivo Administrador)
+    const handleDeleteNews = async (newsId) => {
+        if (window.confirm('Pretende apagar permanentemente esta notícia?')) {
+            try {
+                await api.delete(`news/${newsId}/`);
+                fetchNews(); // Recarrega a listagem
+            } catch (err) {
+                alert('Erro ao tentar apagar a notícia.');
+            }
+        }
+    };
+
     // Validação de papel de acesso
     const isAdmin = user && user.role === 'ADMINISTRADOR';
 
@@ -126,6 +138,11 @@ const NewsList = () => {
                                                 Válido até: {new Date(item.relevance_date).toLocaleDateString()}
                                             </small>
                                         </div>
+                                        {isAdmin && (
+                                            <Button color="danger" size="sm" onClick={() => handleDeleteNews(item.id)}>
+                                                Apagar
+                                            </Button>
+                                        )}
                                         <CardText style={{ whiteSpace: 'pre-line' }} className="text-secondary bg-light p-2 rounded">
                                             {item.description}
                                         </CardText>
