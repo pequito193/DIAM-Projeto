@@ -1,4 +1,3 @@
-# Python / Django
 __pycache__/
 *.pyc
 *.pyo
@@ -7,9 +6,6 @@ __pycache__/
 env/
 venv/
 .env
-# Note: db.sqlite3 is deliberately NOT ignored because it must be handed in.
-
-# Node / React
 node_modules/
 dist/
 build/
@@ -17,13 +13,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .eslintcache
-
-# Testing / QA Artifacts
 cypress/videos/
 cypress/screenshots/
 coverage/
-
-# OS / Editor Files
 .DS_Store
 Thumbs.db
 .vscode/

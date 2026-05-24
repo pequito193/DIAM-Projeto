@@ -18,7 +18,6 @@ const Navigation = () => {
 
     return (
         <Navbar color="dark" dark expand="md" className="mb-4 px-3">
-            {/* O NavLink do reactstrap pode ser combinado com o Link do react-router-dom usando o atributo tag */}
             <NavbarBrand tag={Link} to="/">Fórum Natureza</NavbarBrand>
             
             <Nav className="me-auto" navbar>
@@ -36,12 +35,10 @@ const Navigation = () => {
             <Nav navbar>
                 {user ? (
                     <>
-                        {/* Se o utilizador estiver logado, mostra a saudação e o papel dele */}
                         <NavbarText className="me-3 text-light">
                             Olá, <strong>{user.username}</strong> <span className="badge bg-secondary">{user.role}</span>
                         </NavbarText>
                         
-                        {/* Funcionalidade exclusiva de Admin planeada (Gerir Trilhos/Notícias ou ver Painel) */}
                         {user.role === 'ADMINISTRADOR' && (
                             <NavItem>
                                 <NavLink tag={Link} to="/admin" className="text-warning me-2">Painel Admin</NavLink>

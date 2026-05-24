@@ -43,7 +43,7 @@ def logout_view(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def user_view(request):
-    # Envia os dados do utilizador autenticado para o React (incluindo o papel)
+    # Envia os dados do utilizador autenticado para o react
     return Response({
         'username': request.user.username,
         'role': getattr(request.user, 'role', 'UTILIZADOR')
@@ -82,7 +82,7 @@ def post_detail_update_delete(request, pk):
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        # Permissão exclusiva: apenas o próprio autor ou moderador/admin podem editar
+        # Apenas o próprio autor ou moderador/admin podem editar
         if post.author != request.user and request.user.role not in ['MODERADOR', 'ADMINISTRADOR']:
             return Response({'msg': 'Não tem permissão para editar este post'}, status=status.HTTP_403_FORBIDDEN)
             
@@ -93,7 +93,7 @@ def post_detail_update_delete(request, pk):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        # Permissão exclusiva: apenas o autor ou moderador/admin podem apagar
+        # Apenas o autor ou moderador/admin podem apagar
         if post.author != request.user and request.user.role not in ['MODERADOR', 'ADMINISTRADOR']:
             return Response({'msg': 'Não tem permissão para apagar este post'}, status=status.HTTP_403_FORBIDDEN)
             
@@ -143,7 +143,7 @@ def news_list_create(request):
         return Response(serializer.data)
         
     elif request.method == 'POST':
-        # Bloqueio explícito caso o utilizador não seja Administrador
+        # Bloqueio explícito caso o utilizador não seja administrador
         if request.user.role != 'ADMINISTRADOR':
             return Response({'msg': 'Apenas administradores podem publicar notícias'}, status=status.HTTP_403_FORBIDDEN)
             
@@ -167,7 +167,7 @@ def trail_list_create(request):
         return Response(serializer.data)
         
     elif request.method == 'POST':
-        # Gestão de catálogo protegida para Administradores
+        # Gestão de catálogo protegida para administradores
         if request.user.role != 'ADMINISTRADOR':
             return Response({'msg': 'Apenas administradores podem registar trilhos'}, status=status.HTTP_403_FORBIDDEN)
             

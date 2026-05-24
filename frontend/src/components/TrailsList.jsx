@@ -73,7 +73,7 @@ const TrailsList = () => {
             {error && <Col xs="12"><Alert color="danger">{error}</Alert></Col>}
             {success && <Col xs="12"><Alert color="success">{success}</Alert></Col>}
 
-            {/* FORMULÁRIO DE CRIAÇÃO: Só renderiza se for Administrador */}
+            {/* FORMULÁRIO DE CRIAÇÃO: Só para administradores */}
             {isAdmin && (
                 <Col md="4" className="mb-4">
                     <Card className="p-3 shadow-sm">
@@ -119,7 +119,7 @@ const TrailsList = () => {
                 </Col>
             )}
 
-            {/* TABELA DE EXIBIÇÃO DOS TRILHOS */}
+            {/* TABELA DOS TRILHOS */}
             <Col md={isAdmin ? "8" : "12"}>
                 <h3 className="mb-4">Catálogo de Percursos e Trilhos</h3>
                 {trails.length === 0 ? (

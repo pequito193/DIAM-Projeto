@@ -30,14 +30,13 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {/* A Navigation fica aqui para ser visível em qualquer rota */}
       <Navigation />
       
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
           
-          {/* Proteção de rotas de autenticação */}
+          {/* Rotas de autenticação */}
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/posts" />} />
           <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/posts" />} />
           

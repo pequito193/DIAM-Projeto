@@ -46,7 +46,7 @@ class Comment(models.Model):
 
 class NewsItem(models.Model):
     title = models.CharField(max_length=250)
-    description = models.TextField()  # Armazena meteorologia, promoções ou encontros
+    description = models.TextField()
     relevance_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='news_items')

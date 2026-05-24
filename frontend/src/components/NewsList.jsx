@@ -30,7 +30,6 @@ const NewsList = () => {
         fetchNews();
     }, []);
 
-    // Submissão do formulário (Restrito a Administradores no Backend)
     const handleCreateNews = async (e) => {
         e.preventDefault();
         setError('');
@@ -52,7 +51,7 @@ const NewsList = () => {
         }
     };
 
-    // Remoção de uma notícia (Exclusivo Administrador)
+    // Remoção de uma notícia (exclusivo administrador)
     const handleDeleteNews = async (newsId) => {
         if (window.confirm('Pretende apagar permanentemente esta notícia?')) {
             try {
@@ -72,7 +71,7 @@ const NewsList = () => {
             {error && <Col xs="12"><Alert color="danger">{error}</Alert></Col>}
             {success && <Col xs="12"><Alert color="success">{success}</Alert></Col>}
 
-            {/* FORMULÁRIO DE CRIAÇÃO: Apenas renderiza para o Administrador */}
+            {/* FORMULÁRIO DE CRIAÇÃO: Apenas aparece para o administrador */}
             {isAdmin && (
                 <Col md="4" className="mb-4">
                     <Card className="p-3 shadow-sm border-warning">
@@ -121,7 +120,7 @@ const NewsList = () => {
                 </Col>
             )}
 
-            {/* MURAL DE EXIBIÇÃO DAS NOTÍCIAS */}
+            {/* MURAL DE NOTÍCIAS */}
             <Col md={isAdmin ? "8" : "12"}>
                 <h3 className="mb-4">Notícias Diárias e Alertas Gerais</h3>
                 {news.length === 0 ? (
